@@ -14,6 +14,6 @@ Display | 5" 1280 x 720 px
 Camera  | 8MPx, LED Flash
 Camera  | 5MPx
 
-![LG Magna](http://cdn.gadgets360.com/content/assets/products/lg-magna-2411_480X960_1439192736.jpg)
+![LG Magna](http://cdn.gadgets360.com/content/assets/products/lg-a106-2411_480X960_1439192736.jpg)
 
 This branch is for building Lineage 14 (or Android 7 AOSP based roms) ROMS.

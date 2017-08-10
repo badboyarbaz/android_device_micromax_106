@@ -1,4 +1,4 @@
-import /init.magna_common.rc
+import /init.a106_common.rc
 import /init.zeta0y_core.rc
 on init
 

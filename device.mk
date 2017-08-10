@@ -17,7 +17,7 @@
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/lg/my90ds/overlay
+    device/micromax/a106/overlay
 
 
 
@@ -53,7 +53,7 @@ PRODUCT_COPY_FILES += \
 	
 # GPS
 PRODUCT_COPY_FILES += \
-     device/lg/my90ds/rootdir/system/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+     device/micromax/a106/rootdir/system/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
 PRODUCT_PACKAGES += \
     gps.mt6582
@@ -61,44 +61,44 @@ PRODUCT_PACKAGES += \
 
 # Audio	
 PRODUCT_COPY_FILES += \
-    device/lg/my90ds/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lg/my90ds/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    device/lg/my90ds/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/lg/my90ds/rootdir/system/etc/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    device/micromax/a106/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/micromax/a106/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/micromax/a106/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/micromax/a106/rootdir/system/etc/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
 
 # Thermal
 PRODUCT_COPY_FILES += \
-     device/lg/my90ds/rootdir/system/etc/thermal/thermal.conf:system/etc/.tp/thermal.conf \
-     device/lg/my90ds/rootdir/system/etc/thermal/.ht120.mtc:system/etc/.tp/.ht120.mtc \
-     device/lg/my90ds/rootdir/system/etc/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf
+     device/micromax/a106/rootdir/system/etc/thermal/thermal.conf:system/etc/.tp/thermal.conf \
+     device/micromax/a106/rootdir/system/etc/thermal/.ht120.mtc:system/etc/.tp/.ht120.mtc \
+     device/micromax/a106/rootdir/system/etc/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    device/lg/my90ds/rootdir/system/usr/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
+    device/micromax/a106/rootdir/system/usr/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
 
 # Hostapd
 PRODUCT_COPY_FILES += \
-    device/lg/my90ds/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-    device/lg/my90ds/rootdir/system/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-    device/lg/my90ds/rootdir/system/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+    device/micromax/a106/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    device/micromax/a106/rootdir/system/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    device/micromax/a106/rootdir/system/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 	
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # RAMDISK
 PRODUCT_COPY_FILES += \
-    device/lg/my90ds/rootdir/root/init.magna_common.rc:root/init.magna_common.rc \
-    device/lg/my90ds/rootdir/root/enableswap.sh:root/enableswap.sh \
-    device/lg/my90ds/rootdir/root/init.protect.rc:root/init.protect.rc \
-    device/lg/my90ds/rootdir/root/init.modem.rc:root/init.modem.rc \
-    device/lg/my90ds/rootdir/root/factory_init.rc:root/factory_init.rc \
-    device/lg/my90ds/rootdir/root/ueventd.magna.rc:root/ueventd.magna.rc \
-    device/lg/my90ds/rootdir/root/init.magna.usb.rc:root/init.magna.usb.rc \
-    device/lg/my90ds/rootdir/root/init.zeta0y_core.rc:root/init.zeta0y_core.rc \
-    device/lg/my90ds/rootdir/root/init.magna.rc:root/init.magna.rc \
-    device/lg/my90ds/rootdir/root/fstab.my90ds:root/fstab.my90ds
+    device/micromax/a106/rootdir/root/init.a106_common.rc:root/init.a106_common.rc \
+    device/micromax/a106/rootdir/root/enableswap.sh:root/enableswap.sh \
+    device/micromax/a106/rootdir/root/init.protect.rc:root/init.protect.rc \
+    device/micromax/a106/rootdir/root/init.modem.rc:root/init.modem.rc \
+    device/micromax/a106/rootdir/root/factory_init.rc:root/factory_init.rc \
+    device/micromax/a106/rootdir/root/ueventd.a106.rc:root/ueventd.a106.rc \
+    device/micromax/a106/rootdir/root/init.a106.usb.rc:root/init.a106.usb.rc \
+    device/micromax/a106/rootdir/root/init.zeta0y_core.rc:root/init.zeta0y_core.rc \
+    device/micromax/a106/rootdir/root/init.a106.rc:root/init.a106.rc \
+    device/micromax/a106/rootdir/root/fstab.a106:root/fstab.a106
     
    
 
@@ -135,7 +135,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # call the proprietary setup
-$(call inherit-product, vendor/lg/my90ds/my90ds-vendor.mk)
+$(call inherit-product, vendor/micromax/a106/my90ds-vendor.mk)
 
 PRODUCT_PACKAGES += \
     charger \
@@ -156,7 +156,7 @@ PRODUCT_PACKAGES += \
     libxlog
     
 PRODUCT_PACKAGES += \
-    libmagna
+    liba106
     
 # XCORE995 SHIM LIBS end
 	

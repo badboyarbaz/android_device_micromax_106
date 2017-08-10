@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo lineage_my90ds-userdebug
-add_lunch_combo lineage_my90ds-eng
+add_lunch_combo lineage_a106-userdebug
+add_lunch_combo lineage_a106-eng

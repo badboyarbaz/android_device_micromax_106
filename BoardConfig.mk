@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-LOCAL_PATH := device/lg/my90ds
+LOCAL_PATH := device/micromax/a106
 # Board
 TARGET_BOARD_PLATFORM := mt6582
 MTK_BOARD_PLATFORMS := mt6582
@@ -32,25 +32,25 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 # Storage allocations
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_SYSTEMIMAGE_PARTITION_SIZE:=2496610304
-BOARD_USERDATAIMAGE_PARTITION_SIZE:=3854680064
-BOARD_CACHEIMAGE_PARTITION_SIZE:=863338496
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 943718400
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 968884224
+BOARD_CACHEIMAGE_PARTITION_SIZE := 132120576
+BOARD_CACHEIMAGE_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # kernel stuff
-#BOARD_CUSTOM_BOOTIMG_MK := device/lg/my90ds/tools/bootimg.mk xcore: No mtk-header
+#BOARD_CUSTOM_BOOTIMG_MK := device/micromax/a106/tools/bootimg.mk xcore: No mtk-header
 MTK_PLATFORM := mt6582
-MTK_PROJECT := magna
-#TARGET_KERNEL_SOURCE := kernel/lg/magna
-#TARGET_KERNEL_CONFIG := magna_defconfig
+MTK_PROJECT := a106
+#TARGET_KERNEL_SOURCE := kernel/lg/a106
+#TARGET_KERNEL_CONFIG := a106_defconfig
 #BOARD_KERNEL_CMDLINE :=
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x00000100
-TARGET_PREBUILT_KERNEL := device/lg/my90ds/kernel
+TARGET_PREBUILT_KERNEL := device/micromax/a106/kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-TARGET_RECOVERY_FSTAB := device/lg/my90ds/rootdir/root/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/micromax/a106/rootdir/root/recovery.fstab
 
 # Deodex
 WITH_DEXPREOPT := false
@@ -65,7 +65,7 @@ BLOCK_BASED_OTA := false
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lg/my90ds/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/micromax/a106/bluetooth
 
 # OpenGL
 USE_OPENGL_RENDERER := true
@@ -105,7 +105,7 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap2wake"
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-TARGET_SYSTEM_PROP := device/lg/my90ds/system.prop
+TARGET_SYSTEM_PROP := device/micromax/a106/system.prop
 
 # Dual SIM
 SIM_COUNT := 2
@@ -113,7 +113,7 @@ TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
 TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/lg/my90ds/ril/
+BOARD_RIL_CLASS := ../../../device/micromax/a106/ril/
 
 # Flags
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
@@ -124,6 +124,6 @@ USE_CAMERA_STUB := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/lg/my90ds/sepolicy
+    device/micromax/a106/sepolicy
 
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)

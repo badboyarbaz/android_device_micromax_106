@@ -1,5 +1,5 @@
 # platform specific configuration items
-import /init.magna.usb.rc
+import /init.a106.usb.rc
 import /init.modem.rc
 
 on early-init
@@ -7,7 +7,7 @@ on early-init
     setprop ro.mtk.hardware mt6582
 
 on init
-    export LD_PRELOAD "/system/lib/libxlog.so /system/lib/libmagna.so"
+    export LD_PRELOAD "/system/lib/libxlog.so /system/lib/liba106.so"
     
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
@@ -23,8 +23,8 @@ on init
 
 on fs
     write /proc/bootprof "INIT:eMMC:Mount_All_START"
-    mount_all /fstab.magna
-    swapon_all fstab.magna
+    mount_all /fstab.a106
+    swapon_all fstab.a106
     write /proc/bootprof "INIT:eMMC:Mount_All_END"
 
 # mount different fs end
