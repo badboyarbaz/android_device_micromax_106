@@ -135,7 +135,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # call the proprietary setup
-$(call inherit-product, vendor/micromax/a106/my90ds-vendor.mk)
+$(call inherit-product, vendor/micromax/a106/a106-vendor.mk)
 
 PRODUCT_PACKAGES += \
     charger \
