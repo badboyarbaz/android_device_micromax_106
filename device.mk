@@ -90,15 +90,14 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # RAMDISK
 PRODUCT_COPY_FILES += \
     device/micromax/a106/rootdir/root/init.a106_common.rc:root/init.a106_common.rc \
-    device/micromax/a106/rootdir/root/enableswap.sh:root/enableswap.sh \
     device/micromax/a106/rootdir/root/init.protect.rc:root/init.protect.rc \
+    device/micromax/a106/rootdir/root/fstab.a106:root/fstab.a106 \
     device/micromax/a106/rootdir/root/init.modem.rc:root/init.modem.rc \
     device/micromax/a106/rootdir/root/factory_init.rc:root/factory_init.rc \
     device/micromax/a106/rootdir/root/ueventd.a106.rc:root/ueventd.a106.rc \
     device/micromax/a106/rootdir/root/init.a106.usb.rc:root/init.a106.usb.rc \
     device/micromax/a106/rootdir/root/init.zeta0y_core.rc:root/init.zeta0y_core.rc \
-    device/micromax/a106/rootdir/root/init.a106.rc:root/init.a106.rc \
-    device/micromax/a106/rootdir/root/fstab.a106:root/fstab.a106
+    device/micromax/a106/rootdir/root/init.a106.rc:root/init.a106.rc
     
    
 
@@ -152,8 +151,7 @@ PRODUCT_PACKAGES += \
     
 # XCORE995 SHIM LIBS start  
   
-PRODUCT_PACKAGES += \
-    libxlog
+
     
 PRODUCT_PACKAGES += \
     liba106
