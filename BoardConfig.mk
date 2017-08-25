@@ -1,5 +1,5 @@
 #
-# Copyright 2013 The Android Open-Source Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# inherit from the proprietary version
+-include vendor/micromax/a106/BoardConfigVendor.mk
+
 LOCAL_PATH := device/micromax/a106
+
 # Board
 TARGET_BOARD_PLATFORM := mt6582
-MTK_BOARD_PLATFORMS := mt6582
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 ARCH_ARM_HAVE_VFP := true
@@ -28,9 +32,40 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a7
 TARGET_CPU_VARIANT:= cortex-a7
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
-BOARD_HAS_FLIPPED_SCREEN := true
 
-# Storage allocations
+# Enable dex-preoptimization
+WITH_DEXPREOPT := false
+DONT_DEXPREOPT_PREBUILTS := true
+
+# Link against libxlog
+TARGET_LDPRELOAD := libxlog.so
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := mt6582
+
+TARGET_USERIMAGES_USE_EXT4:=true
+TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := micromax_unite2,a106
+
+# MTK HARDWARE
+BOARD_HAS_MTK_HARDWARE := true
+MTK_HARDWARE := true
+BOARD_USES_LEGACY_MTK_AV_BLOB := true
+COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
+BLOCK_BASED_OTA := false
+
+DEVICE_RESOLUTION := 480x800
+
+# RIL
+BOARD_RIL_CLASS := ../../../device/micromax/a106/ril/
+
+BOARD_CONNECTIVITY_VENDOR := MediaTek
+BOARD_CONNECTIVITY_MODULE := conn_soc
+
+# Partitions & Image
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 943718400
@@ -39,93 +74,86 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 132120576
 BOARD_CACHEIMAGE_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# kernel stuff
-#BOARD_CUSTOM_BOOTIMG_MK := device/micromax/a106/tools/bootimg.mk xcore: No mtk-header
-MTK_PLATFORM := mt6582
-MTK_PROJECT := a106
-TARGET_KERNEL_SOURCE := kernel/micromax/a106
-TARGET_KERNEL_CONFIG := a106_defconfig
-#BOARD_KERNEL_CMDLINE :=
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x00000100
-BOARD_KERNEL_BASE := 0x80000000
+# Flags
+TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
+TARGET_KMODULES := true
+
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
+# Kernel 
+BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG := true
 
-TARGET_RECOVERY_FSTAB := device/micromax/a106/rootdir/root/recovery.fstab
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
-# Deodex
-WITH_DEXPREOPT := false
-DISABLE_DEXPREOPT := true
-
-BLOCK_BASED_OTA := false
-
-#ANDROID_COMPILE_WITH_JACK := false
-#DEFAULT_JACK_ENABLED=false
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/micromax/a106/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
-# OpenGL
+# Sensors
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
+
+# Offline charging
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.mtk
+
+# EGL settings
+BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+BOARD_EGL_NEEDS_HANDLE_VALUE := true
+BOARD_EGL_NEEDS_FNW := true
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
-# FM
-MTK_FM_SUPPORT :=true
-MTK_FM_RX_SUPPORT :=true
-# MTK_WLAN_SUPPORT
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+# WIFI
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_mt66xx
 WIFI_DRIVER_FW_PATH_PARAM:="/dev/wmtWifi"
 WIFI_DRIVER_FW_PATH_STA:=STA
 WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
-#USE_LEGACY_AUDIO_POLICY=true
-#USE_CUSTOM_AUDIO_POLICY := 1
+# GPS
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Disable memcpy opt (for audio libraries)
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
 
-USE_NINJA=false
+# Selinux
+BOARD_SEPOLICY_DIRS += device/micromax/a106/sepolicy
 
-#Mediatek flags
-BOARD_HAS_MTK_HARDWARE := true
-MTK_HARDWARE := true
+# Sepolicy hack for old kernel, mt6582 version is 26.
+POLICYVERS := 26
 
-# FRAMEWORK WITH OUT SYNC
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap2wake"
-
-# Fonts
-EXTENDED_FONT_FOOTPRINT := true
-
-TARGET_SYSTEM_PROP := device/micromax/a106/system.prop
-
-# Dual SIM
-SIM_COUNT := 2
-TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
-TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
-
-BOARD_EGL_CFG := device/lg/my90ds/rootdir/system/etc/egl.cfg
-
-# RIL
-BOARD_RIL_CLASS := ../../../device/micromax/a106/ril/
-
-# Flags
-TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_USERIMAGES_USE_EXT4:=true
-USE_CAMERA_STUB := true
-
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/micromax/a106/sepolicy
-
+# Hack for build
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+# FMRadio
+MTK_FM_SUPPORT := yes
+MTK_FM_RX_SUPPORT := yes
+MTK_FM_CHIP := MT6627_FM
+FM_LIB_BUILD_MT6620 := yes
+FM_LIB_BUILD_MT6627 := yes
+FM_LIB_BUILD_MT6628 := yes
+FM_LIB_BUILD_MT6630 := yes
