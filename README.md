@@ -16,5 +16,7 @@ Display | 4.7" 800 x 480 px
 Camera  | 8MPx, LED Flash
 Camera  | 5MPx
 
+![Alt text](https://i1.sdlcdn.com/img/storefront/05/SDL072634651_3.png "Unite 2")
 
 This branch is for building Lineage 14 (or Android 7 AOSP based roms) ROMS.
+
